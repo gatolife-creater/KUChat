@@ -12,6 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "elliptic": "^6.5.4",
         "express": "^4.17.3"
     }
 }
