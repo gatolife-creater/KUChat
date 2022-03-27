@@ -26,13 +26,6 @@ const App = () => {
     fetch("/api")
       .then((res)=>res.json())
       .then((data)=>setMessage(data.blockchain));
-    // if(isFirstRender.current) { // 初回レンダー判定
-    //   isFirstRender.current = false // もう初回レンダーじゃないよ代入
-    // }else{
-    //   fetch("/api")
-    //   .then((res)=>res.json())
-    //   .then((data)=>setMessage(data));
-    // }
   },[])
 
   
