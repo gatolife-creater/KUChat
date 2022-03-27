@@ -14,7 +14,7 @@ import TransactionPage from './components/TransactionPage';
 import RichListPage from './components/RichList';
 
 const App = () => {
-  const [message, setMessage] = useState([]);
+  const [blockchain, setMessage] = useState([]);
 
   const isFirstRender = useRef(false)
 
@@ -23,20 +23,23 @@ const App = () => {
   }, [])
 
   useEffect(()=>{
-    if(isFirstRender.current) { // 初回レンダー判定
-      isFirstRender.current = false // もう初回レンダーじゃないよ代入
-    }else{
-      fetch("/api")
+    fetch("/api")
       .then((res)=>res.json())
-      .then((data)=>setMessage(data));
-    }
+      .then((data)=>setMessage(data.blockchain));
+    // if(isFirstRender.current) { // 初回レンダー判定
+    //   isFirstRender.current = false // もう初回レンダーじゃないよ代入
+    // }else{
+    //   fetch("/api")
+    //   .then((res)=>res.json())
+    //   .then((data)=>setMessage(data));
+    // }
   },[])
 
   
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<HomePage blockchain={message}/>} exact/>
+        <Route path='/' element={<HomePage blockchain={blockchain}/>} exact/>
         <Route path='/wallet' element={<WalletPage/>}/>
         <Route path='/transaction' element={<TransactionPage/>}/>
         <Route path='/richlist' element={<RichListPage/>}/>

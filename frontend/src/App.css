@@ -9,6 +9,7 @@ main {
 .navbar {
     background-color: #052c65;
     color: white !important;
+    /* padding: 15px 0 15px 0; */
 }
 
 .logo {
