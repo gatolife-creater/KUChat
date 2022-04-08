@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import NavBar from "./NavBar";
-
+//  onClick={()=>{window.location.href = `block_details?number=${index}`}}
 const HomePage = (props) => {
     const {blockchain} = props;
     return (
@@ -13,21 +14,24 @@ const HomePage = (props) => {
                         {blockchain.map((block,index)=>(
                             <div className="col-md-4 ms-auto">
                                 <div className="card">
-                                    <div className="card-header">Block : <span className="block_number">{index}</span></div>
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item hash text-truncate"><span>Hash :</span><br />
-                                            {block.hash}
-                                        </li>
-                                        <li className="list-group-item previousHash text-truncate"><span>Previous Hash :</span><br />
-                                            {block.previousHash}
-                                        </li>
-                                        <li className="list-group-item nonce text-truncate"><span>Nonce :</span><br />
-                                            {block.nonce}
-                                        </li>
-                                        <li className="list-group-item timestamp text-truncate"><span>Timestamp :</span><br />
-                                            {block.timestamp}
-                                        </li>
-                                    </ul>
+                                    <Link to={`/block_details?${index}`} style={{textDecoration:"none"}}>
+                                        <div className="card-header">Block : <span className="block_number">{index}</span></div>
+                                        <ul className="list-group list-group-flush">
+                                            <li className="list-group-item hash text-truncate"><span>Hash :</span><br />
+                                                {block.hash}
+                                            </li>
+                                            <li className="list-group-item previousHash text-truncate"><span>Previous Hash :</span><br />
+                                                {block.previousHash}
+                                            </li>
+                                            <li className="list-group-item nonce text-truncate"><span>Nonce :</span><br />
+                                                {block.nonce}
+                                            </li>
+                                            <li className="list-group-item timestamp text-truncate"><span>Timestamp :</span><br />
+                                                {block.timestamp}
+                                            </li>
+                                        </ul>
+                                    </Link>
+                                    
                                 </div>
                             </div>
                         ))}
@@ -39,33 +43,3 @@ const HomePage = (props) => {
 }
 
 export default HomePage;
-
-/**
- *  <main>
-        <div class="container">
-            <div class="convert-area row justify-content-start">
-                {blockchain.map((block, index) =>
-                    <div class="col-md-4 ms-auto">
-                        <div class="card" onclick="showDetails(this);">
-                            <div class="card-header">Block : <span class="block_number"><%= i %></span></div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item hash text-truncate"><span>Hash :</span> <br>
-                                    <%= kucoin.chain[i].hash %>
-                                </li>
-                                <li class="list-group-item previousHash text-truncate"><span>Previous Hash :</span> <br>
-                                    <%= kucoin.chain[i].previousHash %>
-                                </li>
-                                <li class="list-group-item nonce"><span>Nonce :</span> <br>
-                                    <%= kucoin.chain[i].nonce %>
-                                </li>
-                                <li class="list-group-item timestamp"><span>Timestamp :</span> <br>
-                                    <%= kucoin.chain[i].timestamp %>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <% } %>
-            </div>
-        </div>
-    </main>
- */

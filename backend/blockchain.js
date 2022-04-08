@@ -7,15 +7,16 @@ const ec = new EC("secp256k1");
 
 
 class Transaction {
-    constructor(fromAddress, toAddress, amount) {
+    constructor(fromAddress, toAddress, amount, message = "No Message") {
         this.fromAddress = fromAddress;
         this.toAddress = toAddress;
         this.amount = amount;
+        this.message = message;
         this.timestamp = Date.now();
     }
 
     calculateHash() {
-        return SHA256(this.fromAddress + this.toAddress + this.amount + this.timestamp).toString();
+        return SHA256(this.fromAddress + this.toAddress + this.amount + this.message + this.timestamp).toString();
     }
 
     signTransaction(signingKey) {
@@ -109,7 +110,7 @@ class Blockchain {
 
     minePendingTransactions(miningRewardAddress) {
         // null はシステムであることを示したい。
-        const rewardTx = new Transaction("System", miningRewardAddress, this.miningReward);
+        const rewardTx = new Transaction("System", miningRewardAddress, "Mining Reward", this.miningReward);
         this.pendingTransactions.push(rewardTx);
 
         let block = new Block(Date.now(), this.pendingTransactions, this.getLatestBlock().hash);

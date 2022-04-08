@@ -49,6 +49,8 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
 
+
+
 app.post("/transaction", (req, res) => {
     let { toAddress, message, amount } = req.body;
     transactionFlow(myKey, myWalletAddress, toAddress, amount);
@@ -61,4 +63,4 @@ app.post("/transaction", (req, res) => {
 
 app.listen(port, () => {
     console.log(`listening on *:${port}`);
-})
+});

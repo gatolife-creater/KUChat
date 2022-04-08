@@ -12,6 +12,7 @@ import HomePage from './components/HomePage';
 import WalletPage from './components/WalletPage';
 import TransactionPage from './components/TransactionPage';
 import RichListPage from './components/RichList';
+import BlockDetailsPage from './components/BlockDetailsPage';
 
 const App = () => {
   const [blockchain, setMessage] = useState([]);
@@ -34,8 +35,9 @@ const App = () => {
       <Routes>
         <Route path='/' element={<HomePage blockchain={blockchain}/>} exact/>
         <Route path='/wallet' element={<WalletPage blockchain={blockchain}/>} exact/>
-        <Route path='/transaction' element={<TransactionPage/>}/>
-        <Route path='/richlist' element={<RichListPage/>}/>
+        <Route path='/transaction' element={<TransactionPage/>} exact/>
+        <Route path='/richlist' element={<RichListPage/>} exact/>
+        <Route path='/block_details' element={<BlockDetailsPage blockchain={blockchain}/>} exact/>
       </Routes>
     </Router>
   );
