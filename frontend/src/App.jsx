@@ -33,7 +33,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<HomePage blockchain={blockchain}/>} exact/>
-        <Route path='/wallet' element={<WalletPage/>}/>
+        <Route path='/wallet' element={<WalletPage blockchain={blockchain}/>} exact/>
         <Route path='/transaction' element={<TransactionPage/>}/>
         <Route path='/richlist' element={<RichListPage/>}/>
       </Routes>

@@ -3,9 +3,7 @@ import React from "react";
 import NavBar from "./NavBar";
 
 const HomePage = (props) => {
-
     const {blockchain} = props;
-    const tst= ["1","2","3"];
     return (
         <>
             <NavBar/>

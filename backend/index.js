@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const path = require('path');
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3006;
 
 const { Blockchain, Transaction } = require("./blockchain");
 const EC = require("elliptic").ec;
@@ -38,16 +38,25 @@ transactionFlow(myKey, myWalletAddress, "aaaa", 100);
 
 transactionFlow(yourKey, yourWalletAddress, myWalletAddress, 100);
 
-
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 app.get("/api", (req, res) => {
     res.json({ blockchain: kuchatBlockchain.chain });
-
 });
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+
+app.post("/transaction", (req, res) => {
+    let { toAddress, message, amount } = req.body;
+    transactionFlow(myKey, myWalletAddress, toAddress, amount);
+    console.log("maybe success");
+    for (let i = 0; i < 7; i++) {
+        kuchatBlockchain.minePendingTransactions(myWalletAddress);
+    }
+    res.redirect("/transaction");
 });
 
 app.listen(port, () => {
