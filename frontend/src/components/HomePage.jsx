@@ -10,11 +10,11 @@ const HomePage = (props) => {
             <NavBar/>
             <main>
                 <div className="container">
-                    <div className="convert-area row justifycontent-start">
+                    <div className="row justifycontent-start">
                         {blockchain.map((block,index)=>(
                             <div className="col-md-4 ms-auto">
                                 <div className="card">
-                                    <Link to={`/block_details?${index}`} style={{textDecoration:"none"}}>
+                                    <Link to={`/block_details?number=${index}`} style={{textDecoration:"none"}}>
                                         <div className="card-header">Block : <span className="block_number">{index}</span></div>
                                         <ul className="list-group list-group-flush">
                                             <li className="list-group-item hash text-truncate"><span>Hash :</span><br />

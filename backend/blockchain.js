@@ -110,7 +110,7 @@ class Blockchain {
 
     minePendingTransactions(miningRewardAddress) {
         // null はシステムであることを示したい。
-        const rewardTx = new Transaction("System", miningRewardAddress, "Mining Reward", this.miningReward);
+        const rewardTx = new Transaction("System", miningRewardAddress, this.miningReward, "Mining Reward");
         this.pendingTransactions.push(rewardTx);
 
         let block = new Block(Date.now(), this.pendingTransactions, this.getLatestBlock().hash);
