@@ -13,7 +13,7 @@ const HomePage = (props) => {
                     <div className="row justifycontent-start">
                         {blockchain.map((block,index)=>(
                             <div className="col-md-4 ms-auto">
-                                <div className="card">
+                                <div className="card clickable-card">
                                     <Link to={`/block_details?number=${index}`} style={{textDecoration:"none"}}>
                                         <div className="card-header">Block : <span className="block_number">{index}</span></div>
                                         <ul className="list-group list-group-flush">

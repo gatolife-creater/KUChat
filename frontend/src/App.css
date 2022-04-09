@@ -28,15 +28,21 @@ main {
     border: 3px solid rgb(200, 200, 200);
 }
 
-.card:hover {
+
+/* .card:hover {
     border: 3px solid rgb(0, 125, 255);
     cursor: pointer;
-}
+} */
 
 .card-header {
     background-color: #052c65;
     color: white;
     border-radius: 1px !important;
+}
+
+.clickable-card:hover {
+    border: 3px solid rgb(0, 125, 255);
+    cursor: pointer;
 }
 
 .address-info {
