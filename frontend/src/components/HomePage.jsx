@@ -38,7 +38,7 @@ const HomePage = (props) => {
                     </div>
                 </div>
             </main>
-            <QRCodeReader/>
+            {/* <QRCodeReader/> */}
         </>
     )
 }

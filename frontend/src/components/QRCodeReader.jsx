@@ -18,7 +18,7 @@ class QRCodeReader extends Component {
   }
   render() {
     return (
-      <div>
+      <>
         <QrReader
           delay={300}
           onError={this.handleError}
@@ -26,7 +26,7 @@ class QRCodeReader extends Component {
           style={{ width: '100%' }}
         />
         <p>{this.state.result.text}</p>
-      </div>
+      </>
     )
   }
 }
