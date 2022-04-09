@@ -3,8 +3,7 @@ import React from "react";
 const TransactionTable = (props) =>{
 
     const {transactions} = props;
-    console.log("it works!");
-
+    
     return(
         <>
             <table class="table">
@@ -14,8 +13,8 @@ const TransactionTable = (props) =>{
                         <th className="th-toAddress" scope="col">To</th>
                         <th className="th-fromAddress" scope="col">From</th>
                         <th className="th-timestamp" scope="col">Time</th>
-                        <th className="th-amount" scope="col">Amount</th>
-                        <th className="th-message" scope="col">Message</th>
+                        <th className="th-amount" scope="col">Amt.</th>
+                        <th className="th-message" scope="col">Msg.</th>
                     </tr>
                 </thead>
                 <tbody>

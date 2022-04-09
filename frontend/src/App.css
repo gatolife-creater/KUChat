@@ -105,10 +105,13 @@ main {
         margin: 0 auto;
         padding-top: 100px;
     }
-    .card {
-        width: 250px;
-        margin: 0 auto;
-        margin-bottom: 20px;
-        border: 3px solid rgb(200, 200, 200);
+    .address-info {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    nav.navbar {
+        top: auto;
+        bottom: 0;
+        left: 0;
     }
 }

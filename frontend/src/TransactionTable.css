@@ -8,19 +8,19 @@ th.th-id {
 }
 
 th.th-toAddress {
-    width: 20%;
+    width: 18%;
 }
 
 th.th-fromAddress {
-    width: 20%;
+    width: 18%;
 }
 
 th.th-timestamp {
-    width: 20%;
+    width: 18%;
 }
 
 th.th-amount {
-    width: 15%;
+    width: 16%;
 }
 
 th.th-message {
