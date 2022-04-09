@@ -11,7 +11,6 @@ class QRCodeReader extends Component {
       this.setState({
         result: data
       })
-      console.log(this.state.result);
     }
   }
   handleError = err => {
@@ -26,7 +25,7 @@ class QRCodeReader extends Component {
           onResult={this.handleScan}
           style={{ width: '100%' }}
         />
-        {/* <p>{this.state.result}</p> */}
+        <p>{this.state.result.text}</p>
       </div>
     )
   }
