@@ -7,14 +7,11 @@ import getBalanceOfAddress from "../js/getBalance";
 const WalletPage = (props) => {
 
     const {blockchain} = props;
-    console.log(blockchain);
     
     let balance = 0;
     let address = "aaa";
 
     balance = getBalanceOfAddress(blockchain, address);
-    
-    console.log(balance);
 
     return (
         <>

@@ -86,19 +86,6 @@ main {
     padding: 0;
 }
 
-.table {
-    width: 90% !important;
-    margin: 0 auto;
-}
-
-thead {
-    width: 80%;
-}
-
-tbody {
-    width: 80%;
-}
-
 ::selection {
     background: #009e8f;
     color: rgb(255, 255, 255);
@@ -108,7 +95,7 @@ tbody {
     /* 480px以下に適用されるCSS（スマホ用） */
     main {
         display: block;
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
         padding-top: 100px;
     }

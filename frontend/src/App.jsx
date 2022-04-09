@@ -1,4 +1,6 @@
 import './App.css';
+import './TransactionTable.css'
+
 import React from 'react';
 import{
   BrowserRouter as Router,
@@ -13,6 +15,7 @@ import WalletPage from './components/WalletPage';
 import TransactionPage from './components/TransactionPage';
 import RichListPage from './components/RichList';
 import BlockDetailsPage from './components/BlockDetailsPage';
+import SearchPage from './components/SearchPage';
 
 const App = () => {
   const [blockchain, setMessage] = useState([]);
@@ -38,6 +41,7 @@ const App = () => {
         <Route path='/transaction' element={<TransactionPage/>} exact/>
         <Route path='/richlist' element={<RichListPage/>} exact/>
         <Route path='/block_details' element={<BlockDetailsPage blockchain={blockchain}/>} exact/>
+        <Route path='/search' element={<SearchPage blockchain={blockchain}/>} exact/>
       </Routes>
     </Router>
   );
