@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import NavBar from "./NavBar";
+import QRCodeReader from "./QRCodeReader";
 
 const HomePage = (props) => {
     const {blockchain} = props;
@@ -37,6 +38,7 @@ const HomePage = (props) => {
                     </div>
                 </div>
             </main>
+            <QRCodeReader/>
         </>
     )
 }

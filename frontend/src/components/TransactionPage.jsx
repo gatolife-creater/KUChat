@@ -21,7 +21,7 @@ const TransactionPage = () => {
                         </div>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="message" className="form-label">Address</label>
+                        <label htmlFor="message" className="form-label">Message</label>
                         <input className="form-control" id="message" name="message"/>
                         <div className="form-text">メッセージを入力してください。</div>
                     </div>

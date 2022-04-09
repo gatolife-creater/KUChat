@@ -1,5 +1,4 @@
 import React from "react";
-import Ripples from "react-ripples"
 import{
     Link
 } from "react-router-dom";
@@ -15,26 +14,18 @@ const NavBar = () => {
                 </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {/* <Ripples> */}
                                 <li className="nav-item">
                                     <Link to={"/"} className="nav-link" aria-current="page">Home</Link>
                                 </li>
-                            {/* </Ripples> */}
-                            {/* <Ripples> */}
                                 <li className="nav-item">
                                     <Link to={"/wallet"} className="nav-link">Wallet</Link>
                                 </li>
-                            {/* </Ripples> */}
-                            {/* <Ripples> */}
                                 <li className="nav-item">
                                     <Link to={"/transaction"} className="nav-link">Transaction</Link>
                                 </li>
-                            {/* </Ripples> */}
-                            {/* <Ripples> */}
                                 <li className="nav-item">
                                     <Link to={"/richlist"} className="nav-link">Rich List</Link>
                                 </li>
-                            {/* </Ripples> */}
                         </ul>
                         <form className="d-flex" action="/search">
                             <input className="form-control me-2 input-address" type="search" placeholder="アドレスを入力" aria-label="Search" name="address"/>
