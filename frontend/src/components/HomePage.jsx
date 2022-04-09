@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import NavBar from "./NavBar";
-//  onClick={()=>{window.location.href = `block_details?number=${index}`}}
+
 const HomePage = (props) => {
     const {blockchain} = props;
     return (
@@ -31,7 +31,6 @@ const HomePage = (props) => {
                                             </li>
                                         </ul>
                                     </Link>
-                                    
                                 </div>
                             </div>
                         ))}
