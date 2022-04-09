@@ -20,6 +20,11 @@ const TransactionPage = () => {
                             <span className="input-group-text">KUC</span>
                         </div>
                     </div>
+                    <div className="mb-3">
+                        <label htmlFor="message" className="form-label">Address</label>
+                        <input className="form-control" id="message" name="message"/>
+                        <div className="form-text">メッセージを入力してください。</div>
+                    </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </main>

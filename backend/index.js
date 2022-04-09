@@ -18,9 +18,9 @@ const yourWalletAddress = yourKey.getPublic("hex");
 // ブロックチェーンを生成
 let kuchatBlockchain = new Blockchain();
 
-function transactionFlow(sign, fromWalletAddress, toWalletAddress, amount) {
+function transactionFlow(sign, fromWalletAddress, toWalletAddress, amount, message) {
     // 取引をする
-    let tmptx = new Transaction(fromWalletAddress, toWalletAddress, amount);
+    let tmptx = new Transaction(fromWalletAddress, toWalletAddress, amount, message);
     // 署名する
     tmptx.signTransaction(sign);
     // 取引を保留する
@@ -53,7 +53,8 @@ app.get('*', (req, res) => {
 
 app.post("/transaction", (req, res) => {
     let { toAddress, message, amount } = req.body;
-    transactionFlow(myKey, myWalletAddress, toAddress, amount);
+    console.log(message);
+    transactionFlow(myKey, myWalletAddress, toAddress, amount, message);
     console.log("maybe success");
     for (let i = 0; i < 7; i++) {
         kuchatBlockchain.minePendingTransactions(myWalletAddress);
