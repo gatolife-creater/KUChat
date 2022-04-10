@@ -41,11 +41,10 @@ const App = () => {
       <Routes>
         <Route path='/' element={<HomePage blockchain={blockchain}/>} exact/>
         <Route path='/wallet' element={<WalletPage blockchain={blockchain}/>} exact/>
-        <Route path='/transaction' element={<TransactionPage/>} exact/>
+        <Route path='/transaction' element={<TransactionPage blockchain={blockchain}/>} exact/>
         <Route path='/richlist' element={<RichListPage/>} exact/>
         <Route path='/block_details' element={<BlockDetailsPage blockchain={blockchain}/>} exact/>
         <Route path='/search' element={<SearchPage blockchain={blockchain}/>} exact/>
-        {/* <Route path='/qrcode' element={<QRCodeReader/>} exact/> */}
       </Routes>
     </Router>
   );
