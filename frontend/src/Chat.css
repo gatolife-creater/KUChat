@@ -14,6 +14,10 @@
     padding: 20px;
 }
 
+.chat-address {
+    width: 70%;
+}
+
 .chat-footer {
     display: block;
     position: fixed;
