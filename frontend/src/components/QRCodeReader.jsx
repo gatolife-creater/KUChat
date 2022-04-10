@@ -21,6 +21,7 @@ class QRCodeReader extends Component {
       <>
         <QrReader
           delay={300}
+          constraints={{facingMode:"environment"}}
           onError={this.handleError}
           onResult={this.handleScan}
           style={{ width: '100%' }}
