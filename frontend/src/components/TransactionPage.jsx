@@ -17,11 +17,27 @@ const TransactionPage = () => {
                         <button class="btn btn-outline-primary" type="button" id="button-addon2">決定</button>
                     </div>
                     </form>
-                    <button className="btn btn-success" style={{display:"block", width:"134px", height:"134px", margin:"0 auto", marginTop:"30px"}} onClick={() => setState(true)}>
+                    <button className="btn btn-success" onClick={() => setState(!state)} data-bs-toggle="modal" data-bs-target="#exampleModal" style={{display:"block", width:"134px", height:"134px", margin:"0 auto", marginTop:"30px"}}>
                         <i class="bi bi-qr-code-scan" style={{fontSize:"5em"}}></i>
                     </button>
                 </div>
-                {state ? <QRCodeReader/> : <></>}
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">QR Code リーダー</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {state ? <QRCodeReader/> : <></>}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </main>
         </>
     )
