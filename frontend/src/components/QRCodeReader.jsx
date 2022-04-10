@@ -10,7 +10,8 @@ class QRCodeReader extends Component {
     if (data) {
       this.setState({
         result: data
-      })
+      });
+      window.location.href = `/transaction?address=${this.state.result.text}`;
     }
   }
   handleError = err => {
@@ -26,7 +27,6 @@ class QRCodeReader extends Component {
           onResult={this.handleScan}
           style={{ width: '100%' }}
         />
-        <p>{this.state.result.text}</p>
       </>
     )
   }
