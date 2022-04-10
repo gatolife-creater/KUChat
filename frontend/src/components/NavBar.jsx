@@ -6,7 +6,7 @@ import{
 const NavBar = () => {
     return(
         <header>
-            <nav className="navbar navbar-expand-lg navbar-dark fixed-top border-2 border-top border-warning shadow-lg">
+            <nav className="navbar navbar-expand-lg navbar-dark fixed-top mobile-fixed-bottom border-2 border-top border-warning shadow-lg">
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand border-2 border-bottom border-warning logo">KUChat</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
