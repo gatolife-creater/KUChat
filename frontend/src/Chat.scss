@@ -19,9 +19,10 @@
 }
 
 .chat-sentence {
-    width: 70%;
-    padding: 8px;
-    border-radius: 17px;
+    display: table;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 18px;
     margin-bottom: 30px;
 }
 
@@ -51,24 +52,21 @@
     width: 100%;
     height: 60px;
     background-color: #052c65;
-}
-
-.chat-footer form {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-}
-
-.chat-footer form input {
-    margin-left: 15px;
-    width: calc(100% - 100px);
-    border-radius: 20px;
-}
-
-.chat-footer form button {
-    width: 70px;
-    margin-left: auto;
-    margin-right: 10px;
+    form {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        input {
+            margin-left: 15px;
+            width: calc(100% - 100px);
+            border-radius: 20px;
+        }
+        button {
+            width: 70px;
+            margin-left: auto;
+            margin-right: 10px;
+        }
+    }
 }
