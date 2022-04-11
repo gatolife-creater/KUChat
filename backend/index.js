@@ -53,13 +53,11 @@ app.get('*', (req, res) => {
 
 app.post("/transaction", (req, res) => {
     let { toAddress, message, amount } = req.body;
-    console.log(message);
     transactionFlow(myKey, myWalletAddress, toAddress, amount, message);
-    console.log("maybe success");
     for (let i = 0; i < 7; i++) {
         kuchatBlockchain.minePendingTransactions(myWalletAddress);
     }
-    res.redirect("/transaction");
+    res.redirect(`/transaction?address=${req.query.address}`);
 });
 
 app.listen(port, () => {

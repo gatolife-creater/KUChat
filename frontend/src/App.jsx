@@ -1,6 +1,6 @@
-import './App.css';
-import './TransactionTable.css'
-import "./Chat.css";
+import './App.scss';
+import './TransactionTable.scss'
+import "./Chat.scss";
 
 
 import React from 'react';

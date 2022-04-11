@@ -62,12 +62,11 @@ const TransactionPage = (props) => {
         return(
             <>
                 <ChatHeader className="chat-header" address={queries.address}/>
-                <main>
-                    <div className="chat-main">
-                        {tmpTransactions.map((transaction)=>(
-                            transaction.fromAddress === tmpAddress1 ? <div style={{backgroundColor:"green"}}>{transaction.message}</div>:<div style={{backgroundColor:"gray"}}>{transaction.message}</div> 
-                        ))}
-                    </div>
+                <main className="chat-main">
+                    {tmpTransactions.map((transaction)=>(
+                        transaction.fromAddress === tmpAddress1 ? <div className="chat-sentence chat-sentence-right">{transaction.message}</div>
+                                                                : <div className="chat-sentence chat-sentence-left">{transaction.message}</div> 
+                    ))}
                 </main>
                 <footer>
                     <div className="chat-footer">
