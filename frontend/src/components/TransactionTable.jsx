@@ -6,7 +6,7 @@ const TransactionTable = (props) =>{
     
     return(
         <>
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th className="th-id" scope="col">#</th>

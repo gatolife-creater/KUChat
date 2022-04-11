@@ -3,7 +3,10 @@ import{
     Link
 } from "react-router-dom";
 
+
 const NavBar = () => {
+    let pathname = window.location.pathname;
+    console.log(pathname);
     return(
         <header>
             <nav className="navbar navbar-expand-lg navbar-dark fixed-top mobile-fixed-bottom border-2 border-top border-warning shadow-lg">
@@ -15,16 +18,20 @@ const NavBar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <Link to={"/"} className="nav-link" aria-current="page">Home</Link>
+                                    {pathname === "/" ? <Link to={"/"} className="nav-link active" aria-current="page">Home</Link>
+                                                      : <Link to={"/"} className="nav-link" aria-current="page">Home</Link>}
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={"/wallet"} className="nav-link">Wallet</Link>
+                                    {pathname === "/wallet" ? <Link to={"/wallet"} className="nav-link active">Wallet</Link>
+                                                            : <Link to={"/wallet"} className="nav-link">Wallet</Link>}
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={"/transaction"} className="nav-link">Transaction</Link>
+                                    {pathname === "/transaction" ? <Link to={"/transaction"} className="nav-link active">Transaction</Link>
+                                                                 : <Link to={"/transaction"} className="nav-link">Transaction</Link>}
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={"/richlist"} className="nav-link">Rich List</Link>
+                                    {pathname === "/richlist" ? <Link to={"/richlist"} className="nav-link active">Rich List</Link>
+                                                              : <Link to={"/richlist"} className="nav-link">Rich List</Link>}
                                 </li>
                         </ul>
                         <form className="d-flex" action="/search">
