@@ -1,6 +1,7 @@
 import './App.scss';
 import './TransactionTable.scss'
 import "./Chat.scss";
+import "./Signin.scss";
 
 
 import React from 'react';
@@ -19,6 +20,7 @@ import RichListPage from './components/RichList';
 import BlockDetailsPage from './components/BlockDetailsPage';
 import SearchPage from './components/SearchPage';
 import SignupPage from './components/SignupPage';
+import SigninPage from './components/SigninPage';
 
 const App = () => {
   const [blockchain, setMessage] = useState([]);
@@ -46,6 +48,7 @@ const App = () => {
         <Route path='/block_details' element={<BlockDetailsPage blockchain={blockchain}/>} exact/>
         <Route path='/search' element={<SearchPage blockchain={blockchain}/>} exact/>
         <Route path='/signup' element={<SignupPage/>} exact/>
+        <Route path='/signin' element={<SigninPage/>} exact/>
       </Routes>
     </Router>
   );
