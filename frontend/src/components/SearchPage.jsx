@@ -21,7 +21,8 @@ const SearchPage = (props) =>{
     let transactions = [];
     let address = queries.address;
 
-    balance = getBalanceOfAddress(blockchain, address);
+    address === "System" ? balance = -getBalanceOfAddress(blockchain, address)
+                         : balance = getBalanceOfAddress(blockchain, address);
     transactions = getTransactionsOfAddress(blockchain, address);
 
 
@@ -31,17 +32,15 @@ const SearchPage = (props) =>{
             <main>
                 <div className="container">
                     <div className="card address-info">
-                        <h5 className="card-header text-truncate">Address: 
+                        <h5 className="card-header text-truncate">
+                            {address==="System" ? <></> : <>Address:</>}
                             <span style={{fontSize: "small"}}>{address}</span>
                         </h5>
                         <div className="card-body">
-                            <h5 className="card-title"><strong style={{fontSize: "large"}}>{balance} </strong>KUC</h5>
+                            <h5 className="card-title"><strong style={{fontSize: "large"}}>{address === "System" ? <>Supply:</> : <></> } {balance} </strong>KUC</h5>
                             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Show QR Code
                     </button>
-                            {/* <p className="card-text">
-                                    <strong style={{fontSize: "large"}}>{balance} </strong>KUC
-                            </p> */}
                             <p className="card-text">Transactions:
                                 <TransactionTable transactions={transactions}/>
                             </p>
