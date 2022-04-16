@@ -15,11 +15,16 @@ const TransactionPage = (props) => {
     let location = useLocation();
     let queries = getQueries(location);
 
+    const [rightAddress, setMessage] = useState("");
+    useEffect(()=>{
+        fetch("/get-address")
+        .then((res)=>res.json())
+        .then((data)=>setMessage(data.public));
+    },[])
 
-    let tmpAddress2 = queries.address;
-    let tmpAddress1 = "049698b1d7c63758d00ae039998a51a50a55f02738182ede155f0a720c0c1b705ab3b0c277b4aec32efef2ccfb52e986918b87968dea486941fe9f73e92f7ca75e";
+    const leftAddress = queries.address;
 
-    let tmpTransactions = getCommunicationHistory(blockchain, tmpAddress2, tmpAddress1);
+    let tmpTransactions = getCommunicationHistory(blockchain, leftAddress, rightAddress);
 
     if(!queries.address){
         return(
@@ -63,7 +68,7 @@ const TransactionPage = (props) => {
                 <ChatHeader className="chat-header" address={queries.address}/>
                 <main className="chat-main">
                     {tmpTransactions.map((transaction)=>(
-                        transaction.fromAddress === tmpAddress1 ? <div className="chat-sentence chat-sentence-right">{transaction.message}</div>
+                        transaction.fromAddress === rightAddress ? <div className="chat-sentence chat-sentence-right">{transaction.message}</div>
                                                                 : <div className="chat-sentence chat-sentence-left">{transaction.message}</div> 
                     ))}
                 </main>

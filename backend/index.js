@@ -74,11 +74,9 @@ app.post("/signin-attempt", (req, res) => {
     }
 })
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+app.get("/get-address", (req, res) => {
+    res.json({ public: req.session.public });
 });
-
-
 
 app.post("/transaction", (req, res) => {
     let { toAddress, message, amount } = req.body;
@@ -89,13 +87,20 @@ app.post("/transaction", (req, res) => {
     res.redirect(`/transaction?address=${req.query.address}`);
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+
+
+
+
 app.listen(port, () => {
     console.log(`listening on *:${port}`);
 });
 
 /**
 {
-"public": "04960ab57b5d3a669319f196cba95267942577a7d5991115402bffe3692eb7023febcc5ccdf85f96c8755ac7d76ab165c73f54d502f028976ec60f4e014b3e7f55",
-"privateKey": "f15a224a43ee8fe7a133b10b1fd213f8fd85895aa78ecce2fd7bb87bdde67495"
+"public": "048732e4681981506b54f82a2ffffd384c67eab584f959d636fef57ec8cf994693dace786916403747b56faf0a3183c031bc4f486c9a0721a2584f53dfe8afa6bd",
+"privateKey": "8682ceadd9ec346b0f959a5e996dc866ac5613e04f164d9998a437e500f4a41c"
 }
  */
