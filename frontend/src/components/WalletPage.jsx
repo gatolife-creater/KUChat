@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 import NavBar from "./NavBar";
 
@@ -7,9 +7,15 @@ import getBalanceOfAddress from "../js/getBalance";
 const WalletPage = (props) => {
 
     const {blockchain} = props;
+    const [address, setMessage] = useState("");
+    useEffect(()=>{
+        fetch("/generate-address")
+        .then((res)=>res.json())
+        .then((data)=>setMessage(data.public));
+    },[])
     
     let balance = 0;
-    let address = "aaa";
+    // let address = "aaa";
 
     balance = getBalanceOfAddress(blockchain, address);
 

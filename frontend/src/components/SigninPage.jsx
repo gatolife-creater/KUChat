@@ -1,26 +1,25 @@
 import React from "react";
-// import "../Signin.scss";
 
 const SignupPage = () => {
     return(
             <main className="form-signin text-center">
-                <form>
+                <form method="post" action="/signin-attempt">
                     <img className="mb-4" src="https://pbs.twimg.com/profile_images/1366595750/3_400x400.jpg" alt="" width="72" height="72"/>
                     <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
                 
                     <div className="form-floating">
-                    <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
-                    <label htmlFor="floatingInput">Address</label>
+                        <input className="form-control" name="public" id="floatingInput" placeholder="Address"/>
+                        <label htmlFor="floatingInput">Address</label>
                     </div>
                     <div className="form-floating">
-                    <input type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
-                    <label htmlFor="floatingPassword">Password</label>
+                        <input className="form-control" name="private" id="floatingPassword" placeholder="Password"/>
+                        <label htmlFor="floatingPassword">Password</label>
                     </div>
                 
                     <div className="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"/> Remember me
-                    </label>
+                        <label>
+                            <input type="checkbox" value="remember-me"/> Remember me
+                        </label>
                     </div>
                     <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                     <p className="mt-5 mb-3">No address with you? Please <a href="/signup">sign up</a>.</p>
