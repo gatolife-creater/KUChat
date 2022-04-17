@@ -1,5 +1,4 @@
 .form-signin {
-    max-width: 330px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -7,17 +6,24 @@
     .checkbox {
         font-weight: 400;
     }
+    .form-floating {
+        width: 310px;
+        margin: 0 auto;
+    }
     .form-floating:focus-within {
         z-index: 2;
     }
-    input[type="email"] {
+    input[name="public"] {
         margin-bottom: -1px;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
     }
-    input[type="password"] {
+    input[name="private"] {
         margin-bottom: 10px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+    }
+    button {
+        width: 310px;
     }
 }

@@ -56,7 +56,7 @@ app.get("/generate-address", (req, res) => {
     const walletAddress = key.getPublic("hex");
     kuchatBlockchain.minePendingTransactions(walletAddress);
     keyArray.push({ private: privateKey, public: walletAddress });
-    res.json({ public: walletAddress, privateKey: privateKey });
+    res.json({ public: walletAddress, private: privateKey });
 });
 
 
@@ -67,7 +67,7 @@ app.post("/signin-attempt", (req, res) => {
         if (key.public === public && key.private === private) {
             req.session.public = key.public;
             req.session.private = key.private;
-            res.send("success" + req.session.public);
+            res.redirect("/");
         } else if (i + 1 === keyArray.length) {
             res.send("fail");
         }
