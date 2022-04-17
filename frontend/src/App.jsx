@@ -1,7 +1,7 @@
-import './App.scss';
-import './TransactionTable.scss'
-import "./Chat.scss";
-import "./Signin.scss";
+import './css/App.scss';
+import './css/TransactionTable.scss'
+import "./css/Chat.scss";
+import "./css/Signin.scss";
 
 
 import React from 'react';
@@ -13,14 +13,14 @@ import{
 
 import {useState, useEffect, useRef} from "react";
 
-import HomePage from './components/HomePage';
-import WalletPage from './components/WalletPage';
-import TransactionPage from './components/TransactionPage';
-import RichListPage from './components/RichList';
-import BlockDetailsPage from './components/BlockDetailsPage';
-import SearchPage from './components/SearchPage';
-import SignupPage from './components/SignupPage';
-import SigninPage from './components/SigninPage';
+import HomePage from './components/pages/HomePage';
+import WalletPage from './components/pages/WalletPage';
+import TransactionPage from './components/pages/TransactionPage';
+import RichListPage from './components/pages/RichListPage';
+import BlockDetailsPage from './components/pages/BlockDetailsPage';
+import SearchPage from './components/pages/SearchPage';
+import SignupPage from './components/pages/SignupPage';
+import SigninPage from './components/pages/SigninPage';
 
 const App = () => {
   const [blockchain, setMessage] = useState([]);

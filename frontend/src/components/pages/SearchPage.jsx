@@ -1,14 +1,14 @@
 import React from "react";
 import { QRCodeSVG } from "qrcode.react";
 
-import NavBar from "./NavBar";
-import TransactionTable from "./TransactionTable";
+import NavBar from "../parts/NavBar";
+import TransactionTable from "../parts/TransactionTable";
 
 import { useLocation } from "react-router-dom";
 
-import getQueries from "../js/getQueries";
-import getBalanceOfAddress from "../js/getBalance";
-import getTransactionsOfAddress from "../js/getTransactions";
+import getQueries from "../../js/getQueries";
+import getBalanceOfAddress from "../../js/getBalance";
+import getTransactionsOfAddress from "../../js/getTransactions";
 
 const SearchPage = (props) =>{
 

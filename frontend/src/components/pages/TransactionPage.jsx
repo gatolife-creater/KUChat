@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react";
 
-import NavBar from "./NavBar";
-import ChatHeader from "./ChatHeader";
-import QRCodeReader from "./QRCodeReader";
+import NavBar from "../parts/NavBar";
+import ChatHeader from "../parts/ChatHeader";
+import QRCodeReader from "../parts/QRCodeReader";
 
 import { useLocation } from "react-router-dom";
-import getQueries from "../js/getQueries";
-import getCommunicationHistory from "../js/getCommunicationHistory";
+import getQueries from "../../js/getQueries";
+import getCommunicationHistory from "../../js/getCommunicationHistory";
 
 const TransactionPage = (props) => {
     const {blockchain} = props;

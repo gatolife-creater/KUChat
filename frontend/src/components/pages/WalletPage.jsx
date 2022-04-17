@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 
-import NavBar from "./NavBar";
+import NavBar from "../parts/NavBar";
 
-import getBalanceOfAddress from "../js/getBalance";
+import getBalanceOfAddress from "../../js/getBalance";
 
 const WalletPage = (props) => {
 

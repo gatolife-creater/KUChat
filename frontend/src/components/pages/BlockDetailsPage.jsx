@@ -1,11 +1,11 @@
 import React from "react";
 
-import NavBar from "./NavBar";
-import TransactionTable from "./TransactionTable";
+import NavBar from "../parts/NavBar";
+import TransactionTable from "../parts/TransactionTable";
 
 import { useLocation } from "react-router-dom";
 
-import getQueries from "../js/getQueries";
+import getQueries from "../../js/getQueries";
 
 const BlockDetailsPage = (props) =>{
     const {blockchain} = props;
