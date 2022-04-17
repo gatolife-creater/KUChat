@@ -75,28 +75,40 @@ const TransactionPage = (props) => {
     }else if(queries.address){
         return(
             <>
-                <ChatHeader className="chat-header" address={queries.address}/>
-                <main className="chat-main">
-                    {tmpTransactions.map((transaction)=>(
-                        transaction.fromAddress === rightAddress ? <div className="chat-sentence chat-sentence-right">
-                                                                        {isURL(transaction.message)? <a href={transaction.message} target="_blank">{transaction.message}</a>
-                                                                                                   : <>{transaction.message}</>}
-                                                                    </div>
-                                                                : <div className="chat-sentence chat-sentence-left">{transaction.message}</div> 
-                    ))}
-                </main>
-                <footer>
-                    <div className="chat-footer">
-                        <form method="post">
-                            <input type="text" className="form-control" name="toAddress" value={queries.address} style={{display:"none"}}/>
-                            <input type="text" className="form-control" name="message"/>
-                            <input type="text" className="form-control" name="amount" value="100" style={{display:"none"}}/>
-                            <button type="submit" className="btn btn-success">
-                                <i className="bi bi-send-fill"></i>
-                            </button>
-                        </form>
-                    </div>
-                </footer>
+                {rightAddress?  <>
+                                    <ChatHeader className="chat-header" address={queries.address}/>
+                                    <main className="chat-main">
+                                        {tmpTransactions.map((transaction)=>(
+                                            transaction.fromAddress === rightAddress ? <div className="chat-sentence chat-sentence-right">
+                                                                                            {isURL(transaction.message)? <a href={transaction.message} target="_blank">{transaction.message}</a>
+                                                                                                                    : <>{transaction.message}</>}
+                                                                                        </div>
+                                                                                    : <div className="chat-sentence chat-sentence-left">{transaction.message}</div> 
+                                        ))}
+                                    </main>
+                                    <footer>
+                                        <div className="chat-footer">
+                                            <form method="post">
+                                                <input type="text" className="form-control" name="toAddress" value={queries.address} style={{display:"none"}}/>
+                                                <input type="text" className="form-control" name="message"/>
+                                                <input type="text" className="form-control" name="amount" value="100" style={{display:"none"}}/>
+                                                <button type="submit" className="btn btn-success">
+                                                    <i className="bi bi-send-fill"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </footer>
+                                </>
+                            :   <>
+                                    <ChatHeader className="chat-header" address={queries.address}/>
+                                    <main className="chat-main">
+                                        <center>
+                                            <h2 style={{color:"white"}}>Please sign in or sign up.</h2>
+                                            <a href="/signin" className="btn btn-lg btn-success mt-5" style={{color:"white"}}>Sign in / Sign up</a>
+                                        </center> 
+                                    </main>
+                                </>}
+                
             </>
         )
     }  

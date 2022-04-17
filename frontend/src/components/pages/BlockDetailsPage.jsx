@@ -23,7 +23,9 @@ const BlockDetailsPage = (props) =>{
         <>
             <NavBar/>
             <main>
-                <TransactionTable transactions={transactions}/>
+                <div className="container">
+                    <TransactionTable transactions={transactions}/>
+                </div>
             </main>
         </>
     )
