@@ -30,12 +30,6 @@ function transactionFlow(sign, fromWalletAddress, toWalletAddress, amount, messa
     kuchatBlockchain.addTransaction(tmptx);
 }
 
-for (let i = 0; i < 7; i++) {
-    kuchatBlockchain.minePendingTransactions(myWalletAddress);
-}
-
-transactionFlow(myKey, myWalletAddress, "aaaa", 100);
-
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../frontend/build')));
