@@ -7,6 +7,7 @@ import QRCodeReader from "../parts/QRCodeReader";
 import { useLocation } from "react-router-dom";
 import getQueries from "../../js/getQueries";
 import getCommunicationHistory from "../../js/getCommunicationHistory";
+import isURL from "../../js/isURL";
 
 const TransactionPage = (props) => {
     const {blockchain} = props;
@@ -77,7 +78,10 @@ const TransactionPage = (props) => {
                 <ChatHeader className="chat-header" address={queries.address}/>
                 <main className="chat-main">
                     {tmpTransactions.map((transaction)=>(
-                        transaction.fromAddress === rightAddress ? <div className="chat-sentence chat-sentence-right">{transaction.message}</div>
+                        transaction.fromAddress === rightAddress ? <div className="chat-sentence chat-sentence-right">
+                                                                        {isURL(transaction.message)? <a href={transaction.message} target="_blank">{transaction.message}</a>
+                                                                                                   : <>{transaction.message}</>}
+                                                                    </div>
                                                                 : <div className="chat-sentence chat-sentence-left">{transaction.message}</div> 
                     ))}
                 </main>
