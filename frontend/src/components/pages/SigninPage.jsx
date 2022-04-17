@@ -21,7 +21,7 @@ const SignupPage = () => {
                     
                         <button className="mt-5 w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                         <p className="mt-5 mb-3">No address with you? Please <a href="/signup">sign up</a>.</p>
-                        <p className="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+                        <p className="mt-5 mb-3 text-muted">&copy; 2021</p>
                     </form>
                 </main>
             </>

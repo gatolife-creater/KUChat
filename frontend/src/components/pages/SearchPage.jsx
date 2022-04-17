@@ -4,7 +4,7 @@ import { QRCodeSVG } from "qrcode.react";
 import NavBar from "../parts/NavBar";
 import TransactionTable from "../parts/TransactionTable";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 import getQueries from "../../js/getQueries";
 import getBalanceOfAddress from "../../js/getBalance";
@@ -39,8 +39,9 @@ const SearchPage = (props) =>{
                         <div className="card-body">
                             <h5 className="card-title"><strong style={{fontSize: "large"}}>{address === "System" ? <>Supply:</> : <></> } {balance} </strong>KUC</h5>
                             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Show QR Code
-                    </button>
+                                Show QR Code
+                            </button>
+                            <Link to={`../transaction?address=${address}`} className="btn btn-success">Chat</Link>
                             <p className="card-text">Transactions:
                                 <TransactionTable transactions={transactions}/>
                             </p>
