@@ -1,8 +1,6 @@
-// このライブラリはオブジェクトを使うらしい
 const SHA256 = require('crypto-js/sha256');
 
 const EC = require("elliptic").ec;
-//ビットコインのウォレットにも実際に使われるアルゴリズムらしい
 const ec = new EC("secp256k1");
 
 
@@ -16,7 +14,13 @@ class Transaction {
     }
 
     calculateHash() {
-        return SHA256(this.fromAddress + this.toAddress + this.amount + this.message + this.timestamp).toString();
+        return SHA256(
+            this.fromAddress +
+            this.toAddress +
+            this.amount +
+            this.message +
+            this.timestamp
+        ).toString();
     }
 
     signTransaction(signingKey) {
@@ -47,30 +51,18 @@ class Block {
         this.transactions = transactions;
         this.previousHash = previousHash;
 
-        /** 
-         * calculateHash()は this.previousHash, this.timestamp, this.transactionsを引数に取るから、
-         * インスタンス生成時にハッシュを設定することができる
-         * */
         this.hash = this.calculateHash();
         this.nonce = 0;
     }
 
-
-
-    /**
-     * これは前のブロックのハッシュ、取引された時間、取引の情報などをもとにハッシュを生成している。
-     * つまりこれによって生成されるハッシュは、取引の要約というわけだ。
-     */
     calculateHash() {
-            /**
-             * オブジェクトが返ってくるので文字列にする
-             */
-            return SHA256(this.previousHash + this.timestamp + JSON.stringify(this.transactions) + this.nonce).toString();
-        }
-        /**
-         * 0の数でマイニングの難易度が決まってるっぽい
-         * ex.) diffilculty = 3 --> ゼロの数が三個 
-         */
+        return SHA256(
+            this.previousHash +
+            this.timestamp +
+            JSON.stringify(this.transactions) +
+            this.nonce
+        ).toString();
+    }
     mineBlock(difficulty) {
         while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
             this.nonce++;
@@ -82,9 +74,7 @@ class Block {
 
     hasValidTransactions() {
         for (const tx of this.transactions) {
-            if (!tx.isValid()) {
-                return false;
-            }
+            if (!tx.isValid()) return false;
         }
         return true;
     }
@@ -92,16 +82,13 @@ class Block {
 
 class Blockchain {
     constructor() {
-
-        // thisというのはBlockchainの実態を参照しているらしい、
-        // 今回のはiCryptocurrencyを参照
         this.chain = [this.createGenesisBlock()];
         this.difficulty = 2;
         this.pendingTransactions = [];
         this.miningReward = 100;
     }
     createGenesisBlock() {
-        return new Block( /*"02/05/2022"*/ Date.now(), [], "0");
+        return new Block(Date.now(), [], "0");
     }
 
     getLatestBlock() {
@@ -109,14 +96,12 @@ class Blockchain {
     }
 
     minePendingTransactions(miningRewardAddress) {
-        // null はシステムであることを示したい。
         const rewardTx = new Transaction("System", miningRewardAddress, this.miningReward, "Mining Reward");
         this.pendingTransactions.push(rewardTx);
 
         let block = new Block(Date.now(), this.pendingTransactions, this.getLatestBlock().hash);
         block.mineBlock(this.difficulty);
 
-        console.log("Block successfully mined!");
         this.chain.push(block);
 
         this.pendingTransactions = [];
@@ -148,11 +133,6 @@ class Blockchain {
         this.pendingTransactions.push(transaction);
     }
 
-    /**
-     * 仮想通貨は自分自身で保持している様に思われるが、
-     * 実際はブロックチェーンにその保持量を問い合わせているらしい。
-     * さて、ここには仮想通貨の量を調べたいアドレスを引数に取る。
-     */
     getBalanceOfAddress(address) {
         let balance = 0;
 

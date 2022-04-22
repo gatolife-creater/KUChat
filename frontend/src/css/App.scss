@@ -102,6 +102,13 @@ main {
     color: rgb(255, 255, 255);
 }
 
+#defaultCanvas0 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
 @media screen and (max-width: 480px) {
     /* 480px以下に適用されるCSS（スマホ用） */
     main {

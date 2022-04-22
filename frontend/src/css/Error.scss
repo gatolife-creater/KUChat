@@ -1,0 +1,20 @@
+.plate {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 40%;
+    margin: 10px auto auto 10px;
+    padding: 20px;
+}
+
+@media screen and (max-width: 480px) {
+    /* 480px以下に適用されるCSS（スマホ用） */
+    main {
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 100px;
+    }
+    .plate {
+        width: 80%;
+        margin: 0 auto;
+    }
+}

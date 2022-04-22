@@ -14,6 +14,7 @@ const key = ec.genKeyPair();
 const myKey = ec.keyFromPrivate("a1824ada2af9f5f2f9884e7e3444491fae672d0965e36f04c179ed3398e6883e");
 const walletAddress = key.getPublic("hex");
 const myWalletAddress = myKey.getPublic("hex");　
+console.log(key);
 // hexはおそらく16進数のこと。実際にmyWalletAddressは16進数になっている。
 
 // ブロックチェーンを生成
@@ -66,7 +67,7 @@ app.post("/signin-attempt", (req, res) => {
             res.send("fail");
         }
     }
-})
+});
 
 app.get("/get-address", (req, res) => {
     res.json({ public: req.session.public });
@@ -91,10 +92,3 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
     console.log(`listening on *:${port}`);
 });
-
-/**
-{
-"public": "048732e4681981506b54f82a2ffffd384c67eab584f959d636fef57ec8cf994693dace786916403747b56faf0a3183c031bc4f486c9a0721a2584f53dfe8afa6bd",
-"privateKey": "8682ceadd9ec346b0f959a5e996dc866ac5613e04f164d9998a437e500f4a41c"
-}
- */
