@@ -12,18 +12,17 @@ class Fib {
         this.y = [];
         this.col = [];
 
-        this.resize = 0;
+        this.resize = 50;
     }
     fibS(p5, n) {
         p5.rectMode(p5.CENTER);
-        this.resize = 1;
         for (let i = 0; i < n; i++) {
             if (i <= 1){
                 this.number[0] = 0;
                 this.number[1] = 1;
-            } 
-
-            if (i > 1) this.number[i] = (this.number[i - 2]) + (this.number[i - 1]);
+            }else{
+                this.number[i] = (this.number[i - 2]) + (this.number[i - 1]);
+            }
 
             switch (i % 4) {
                 case 0: //左or零番目
@@ -37,7 +36,7 @@ class Fib {
 
                 case 1: //下or基準
                     if (i == 1) {
-                        this.x[1] = this.y[1] = 0; //<---
+                        this.x[1] = this.y[1] = 0; 
                     } else {
                         this.x[i] = this.x[i - 1] + (this.number[i] - this.number[i - 1]) / 2;
                         this.y[i] = this.y[i - 1] + (this.number[i] + this.number[i - 1]) / 2;
@@ -59,13 +58,14 @@ class Fib {
 
     fibD(p5, n) {
         p5.translate(p5.width / 2, p5.height / 2);
+
         if (this.resize > 50) this.resize = 50;
         if (this.resize < 5.791724706488976e-38) this.resize = 5.791724706488976e-38;
+
         for (let i = 0; i < n; i++) {
             p5.fill(0);
             p5.stroke(0, 125, 255);
             p5.strokeWeight(5);
-
             p5.rect(this.x[i] * this.resize, this.y[i] * this.resize, this.number[i] * this.resize, this.number[i] * this.resize);
         }   
         

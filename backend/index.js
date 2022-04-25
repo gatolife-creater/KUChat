@@ -37,7 +37,10 @@ app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use(session({
     secret: 'secret_key',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 24 * 60 * 60 * 1000
+    }
 }));
 
 app.get("/api", (req, res) => {
