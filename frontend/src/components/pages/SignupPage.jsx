@@ -23,7 +23,7 @@ const SignupPage = () => {
 
                 {message.mnemonic ?  <>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text">Your Address</span>
+                                    <span class="input-group-text">Passphrase</span>
                                     <input type="text" class="form-control" value={message.mnemonic} readOnly="true"/>
                                     <CopyToClipboard text={message.mnemonic}>
                                         {publicClickboard? <span className="input-group-text">Copied</span>
@@ -33,7 +33,7 @@ const SignupPage = () => {
                             </>
                             :<button onClick={generateAddress} className="mt-5 btn btn-lg btn-primary" type="button">Sign up</button>}
                 
-                <p className="mt-5 mb-3">Already have address? Please <a href="/signin">sign in</a>.</p>
+                <p className="mt-5 mb-3">Already have passphrase? Please <a href="/signin">sign in</a>.</p>
                 <p className="mt-5 mb-3 text-muted">&copy; 2021</p>
             </main>
         </>
