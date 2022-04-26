@@ -6,16 +6,15 @@ const port = process.env.PORT || 3006;
 
 const { Blockchain, Transaction } = require("./blockchain");
 const EC = require("elliptic").ec;
-
 //ビットコインのウォレットにも実際に使われるアルゴリズムらしい
 const ec = new EC("secp256k1");
 
-// hexはおそらく16進数のこと。実際にmyWalletAddressは16進数になっている。
+const bip39 = require("bip39");
+const crypto = require("crypto");
 
 // ブロックチェーンを生成
 const kuchatBlockchain = new Blockchain();
 
-const keyArray = [];
 
 function transactionFlow(sign, fromWalletAddress, toWalletAddress, amount, message) {
     // 取引をする
@@ -43,28 +42,32 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/generate-address", (req, res) => {
-    const key = ec.genKeyPair();
 
-    const privateKey = key.getPrivate("hex");
-    const walletAddress = key.getPublic("hex");
-    kuchatBlockchain.minePendingTransactions(walletAddress);
-    keyArray.push({ private: privateKey, public: walletAddress });
-    res.json({ public: walletAddress, private: privateKey });
+    const mnemonic = bip39.generateMnemonic();
+    const seed = bip39.mnemonicToEntropy(mnemonic);
+    const key = Buffer.from('Bitcoin seed', 'utf8');
+    const hmac = crypto.createHmac('sha512', key);
+    const hash = hmac.update(seed).digest();
+    const privateKey = hash.slice(0, 32);
+    const publicKey = ec.keyFromPrivate(privateKey.toString()).getPublic("hex");
+    kuchatBlockchain.minePendingTransactions(publicKey);
+    res.json({ mnemonic: mnemonic.toString() });
 });
 
 
 app.post("/signin-attempt", (req, res) => {
-    let { public, private } = req.body;
-    for (let i = 0; i < keyArray.length; i++) {
-        let key = keyArray[i];
-        if (key.public === public && key.private === private) {
-            req.session.public = key.public;
-            req.session.private = key.private;
-            res.redirect("/");
-        } else if (i + 1 === keyArray.length) {
-            res.send("fail");
-        }
-    }
+    const seed = bip39.mnemonicToEntropy(req.body.mnemonic);
+    const key = Buffer.from('Bitcoin seed', 'utf8');
+    const hmac = crypto.createHmac('sha512', key);
+    const hash = hmac.update(seed).digest();
+    const privateKey = hash.slice(0, 32);
+
+    const keyPair = ec.keyFromPrivate(privateKey.toString());
+
+    req.session.public = keyPair.getPublic("hex");
+    req.session.private = keyPair.getPrivate("hex");
+
+    res.redirect("/");
 });
 
 app.get("/get-address", (req, res) => {

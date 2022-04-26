@@ -4,7 +4,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 
 const SignupPage = () => {
-    const [keyPair, setMessage] = useState("");
+    const [message, setMessage] = useState("");
     const [publicClickboard, setPublicClickboardState] = useState(false);
     const [privateClickboard, setPrivateClickboardState] = useState(false);
 
@@ -21,21 +21,13 @@ const SignupPage = () => {
                 <img className="mb-4" src="https://pbs.twimg.com/profile_images/1366595750/3_400x400.jpg" alt="" width="72" height="72"/>
                 <h1 className="h3 mb-3 fw-normal">Please sign up</h1>
 
-                {keyPair ?  <>
+                {message.mnemonic ?  <>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Your Address</span>
-                                    <input type="text" class="form-control" value={keyPair.public} readOnly="true"/>
-                                    <CopyToClipboard text={keyPair.public}>
+                                    <input type="text" class="form-control" value={message.mnemonic} readOnly="true"/>
+                                    <CopyToClipboard text={message.mnemonic}>
                                         {publicClickboard? <span className="input-group-text">Copied</span>
                                                          : <span className="input-group-text" onClick={()=>setPublicClickboardState(true)}>Copy</span>}
-                                    </CopyToClipboard>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">Your Secret Key</span>
-                                    <input type="text" class="form-control" value={keyPair.private} readOnly="true"/>   
-                                    <CopyToClipboard text={keyPair.private}>
-                                        {privateClickboard? <span className="input-group-text">Copied</span>
-                                                         : <span className="input-group-text" onClick={()=>setPrivateClickboardState(true)}>Copy</span>}
                                     </CopyToClipboard>
                                 </div>
                             </>
