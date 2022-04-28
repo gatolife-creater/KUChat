@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../parts/NavBar";
 
 const SignupPage = () => {
@@ -16,7 +17,7 @@ const SignupPage = () => {
                         </div>
                     
                         <button className="mt-5 btn btn-lg btn-primary" type="submit">Sign in</button>
-                        <p className="mt-5 mb-3">No passphrase with you? Please <a href="/signup">sign up</a>.</p>
+                        <p className="mt-5 mb-3">No passphrase with you? Please <Link to="/signup">sign up</Link>.</p>
                         <p className="mt-5 mb-3 text-muted">&copy; 2021</p>
                     </form>
                 </main>

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../parts/NavBar";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -33,7 +34,7 @@ const SignupPage = () => {
                             </>
                             :<button onClick={generateAddress} className="mt-5 btn btn-lg btn-primary" type="button">Sign up</button>}
                 
-                <p className="mt-5 mb-3">Already have passphrase? Please <a href="/signin">sign in</a>.</p>
+                <p className="mt-5 mb-3">Already have passphrase? Please <Link to="/signin">sign in</Link>.</p>
                 <p className="mt-5 mb-3 text-muted">&copy; 2021</p>
             </main>
         </>
