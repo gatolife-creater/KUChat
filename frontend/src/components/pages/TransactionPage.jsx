@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 
 import NavBar from "../parts/NavBar";
 import ChatHeader from "../parts/ChatHeader";
@@ -65,7 +66,7 @@ const TransactionPage = (props) => {
                                 :   <>
                                         <center>
                                             <h2>Please sign in or sign up.</h2>
-                                            <a href="/signin" className="btn btn-lg btn-primary mt-5">Sign in / Sign up</a>
+                                            <Link to="/signin" className="btn btn-lg btn-primary mt-5">Sign in / Sign up</Link>
                                         </center> 
                                     </>}
                     
@@ -104,7 +105,7 @@ const TransactionPage = (props) => {
                                     <main className="chat-main">
                                         <center>
                                             <h2 style={{color:"white"}}>Please sign in or sign up.</h2>
-                                            <a href="/signin" className="btn btn-lg btn-success mt-5" style={{color:"white"}}>Sign in / Sign up</a>
+                                            <Link to="/signin" className="btn btn-lg btn-success mt-5" style={{color:"white"}}>Sign in / Sign up</Link>
                                         </center> 
                                     </main>
                                 </>}

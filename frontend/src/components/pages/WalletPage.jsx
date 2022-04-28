@@ -4,6 +4,7 @@ import NavBar from "../parts/NavBar";
 import { QRCodeSVG } from "qrcode.react";
 
 import getBalanceOfAddress from "../../js/getBalance";
+import { Link } from "react-router-dom";
 
 const WalletPage = (props) => {
 
@@ -38,7 +39,7 @@ const WalletPage = (props) => {
                             </ul>
                         :   <center>
                                 <h2>Please sign in or sign up.</h2>
-                                <a href="/signin" className="btn btn-lg btn-primary mt-5">Sign in / Sign up</a>
+                                <Link to="/signin" className="btn btn-lg btn-primary mt-5">Sign in / Sign up</Link>
                             </center>  
                             }
 
@@ -58,7 +59,6 @@ const WalletPage = (props) => {
                             </div>
                         </div>
                     </div>
-                            
             </main>
         </>
     )

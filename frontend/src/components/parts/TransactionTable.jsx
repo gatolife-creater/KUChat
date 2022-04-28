@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TransactionTable = (props) =>{
 
@@ -21,8 +22,8 @@ const TransactionTable = (props) =>{
                     {transactions.map((transaction, index)=>(
                         <tr>
                             <th className="td-id" scope="row">{index}</th>
-                            <td className="td-toAddress"><a href={`/search?address=${transaction.toAddress}`}>{transaction.toAddress}</a></td>
-                            <td className="td-fromAddress"><a href={`/search?address=${transaction.fromAddress}`}>{transaction.fromAddress}</a></td>
+                            <td className="td-toAddress"><Link to={`/search?address=${transaction.toAddress}`}>{transaction.toAddress}</Link></td>
+                            <td className="td-fromAddress"><Link to={`/search?address=${transaction.fromAddress}`}>{transaction.fromAddress}</Link></td>
                             <td className="td-timestamp">{transaction.timestamp}</td>
                             <td className="td-amount">{transaction.amount}</td>
                             <td className="td-message">{transaction.message}</td>
