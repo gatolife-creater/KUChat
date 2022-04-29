@@ -25,6 +25,7 @@ class QRCodeReader extends Component {
           constraints={{facingMode:"environment"}}
           onError={this.handleError}
           onResult={this.handleScan}
+          videoId="qr-code-reader"
           style={{ width: '100%' }}
         />
       </>

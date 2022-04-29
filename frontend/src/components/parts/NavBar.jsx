@@ -6,7 +6,6 @@ import{
 
 const NavBar = () => {
     let pathname = window.location.pathname;
-    console.log(pathname);
     return(
         <header>
             <nav className="navbar navbar-expand-lg navbar-dark fixed-top mobile-fixed-bottom border-2 border-top border-warning shadow-lg">

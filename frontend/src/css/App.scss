@@ -109,6 +109,34 @@ main {
     z-index: -1;
 }
 
+.modal-body {
+    position: relative;
+}
+
+.target-rect {
+    --b: 8px;
+    /* thickness of the border */
+    --c: #052c65;
+    /* color of the border */
+    --w: 50px;
+    /* width of border */
+    border: var(--b) solid transparent;
+    /* space for the border */
+    --g: #0000 90deg, var(--c) 0;
+    background: conic-gradient(from 90deg at top var(--b) left var(--b), var(--g)) 0 0, conic-gradient(from 180deg at top var(--b) right var(--b), var(--g)) 100% 0, conic-gradient(from 0deg at bottom var(--b) left var(--b), var(--g)) 0 100%, conic-gradient(from -90deg at bottom var(--b) right var(--b), var(--g)) 100% 100%;
+    background-size: var(--w) var(--w);
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    position: absolute;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @media screen and (max-width: 480px) {
     /* 480px以下に適用されるCSS（スマホ用） */
     main {
