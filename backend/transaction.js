@@ -3,6 +3,13 @@ const EC = require("elliptic").ec;
 const ec = new EC("secp256k1");
 
 class Transaction {
+    /**
+     * 
+     * @param {string} fromAddress 
+     * @param {string} toAddress  
+     * @param {number} amount 
+     * @param {string} message 
+     */
     constructor(fromAddress, toAddress, amount, message = "No Message") {
         this.fromAddress = fromAddress;
         this.toAddress = toAddress;
