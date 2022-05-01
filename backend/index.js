@@ -1,13 +1,15 @@
 const express = require('express')
 const app = express()
+
 const session = require("express-session");
+
 const path = require('path');
 const port = process.env.PORT || 3007;
 
 const { Transaction } = require("./transaction");
 const { Blockchain } = require("./blockchain");
+
 const EC = require("elliptic").ec;
-//ビットコインのウォレットにも実際に使われるアルゴリズムらしい
 const ec = new EC("secp256k1");
 
 const bip39 = require("bip39");
@@ -15,17 +17,6 @@ const crypto = require("crypto");
 
 // ブロックチェーンを生成
 const kuchatBlockchain = new Blockchain();
-
-
-function transactionFlow(sign, fromWalletAddress, toWalletAddress, amount, message) {
-    // 取引をする
-    let tmptx = new Transaction(fromWalletAddress, toWalletAddress, amount, message);
-    // 署名する
-    tmptx.signTransaction(sign);
-    // 取引を保留する
-    kuchatBlockchain.addTransaction(tmptx);
-}
-
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../frontend/build')));
@@ -77,8 +68,14 @@ app.get("/get-address", (req, res) => {
 
 app.post("/transaction", (req, res) => {
     let { toAddress, message, amount } = req.body;
-    transactionFlow(ec.keyFromPrivate(req.session.private), req.session.public, toAddress, amount, message);
-    for (let i = 0; i < 7; i++) {
+
+    let transaction = new Transaction(req.session.public, toAddress, amount, message);
+    // 署名する
+    transaction.signTransaction(ec.keyFromPrivate(req.session.private));
+    // 取引を保留する
+    kuchatBlockchain.addTransaction(transaction);
+
+    for (let i = 0; i < 3; i++) {
         kuchatBlockchain.minePendingTransactions(req.session.public);
     }
     res.redirect(`/transaction?address=${req.query.address}`);
@@ -87,9 +84,6 @@ app.post("/transaction", (req, res) => {
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
-
-
-
 
 app.listen(port, () => {
     console.log(`listening on *:${port}`);
