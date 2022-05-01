@@ -6,22 +6,23 @@ let canvas;
 let fib;
 
 class Fib {
-    constructor() {
-        this.number = [];
+    constructor(count) {
+        this.count = count;
+        this.numbers = [];
         this.x = [];
         this.y = [];
         this.col = [];
 
         this.resize = 50;
     }
-    fibS(p5, n) {
+    fibS(p5) {
         p5.rectMode(p5.CENTER);
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < this.count; i++) {
             if (i <= 1){
-                this.number[0] = 0;
-                this.number[1] = 1;
+                this.numbers[0] = 0;
+                this.numbers[1] = 1;
             }else{
-                this.number[i] = (this.number[i - 2]) + (this.number[i - 1]);
+                this.numbers[i] = (this.numbers[i - 2]) + (this.numbers[i - 1]);
             }
 
             switch (i % 4) {
@@ -29,8 +30,8 @@ class Fib {
                     if (i === 0) {
                         this.x[0] = this.y[0] = 0;
                     } else {
-                        this.x[i] = this.x[i - 1] - (this.number[i] + this.number[i - 1]) / 2;
-                        this.y[i] = this.y[i - 1] + (this.number[i] - this.number[i - 1]) / 2;
+                        this.x[i] = this.x[i - 1] - (this.numbers[i] + this.numbers[i - 1]) / 2;
+                        this.y[i] = this.y[i - 1] + (this.numbers[i] - this.numbers[i - 1]) / 2;
                     }
                     break;
 
@@ -38,19 +39,19 @@ class Fib {
                     if (i === 1) {
                         this.x[1] = this.y[1] = 0; 
                     } else {
-                        this.x[i] = this.x[i - 1] + (this.number[i] - this.number[i - 1]) / 2;
-                        this.y[i] = this.y[i - 1] + (this.number[i] + this.number[i - 1]) / 2;
+                        this.x[i] = this.x[i - 1] + (this.numbers[i] - this.numbers[i - 1]) / 2;
+                        this.y[i] = this.y[i - 1] + (this.numbers[i] + this.numbers[i - 1]) / 2;
                     }
                     break;
 
                 case 2: //右
-                    this.x[i] = this.x[i - 1] + (this.number[i] + this.number[i - 1]) / 2;
-                    this.y[i] = this.y[i - 1] - (this.number[i] - this.number[i - 1]) / 2;
+                    this.x[i] = this.x[i - 1] + (this.numbers[i] + this.numbers[i - 1]) / 2;
+                    this.y[i] = this.y[i - 1] - (this.numbers[i] - this.numbers[i - 1]) / 2;
                     break;
 
                 case 3: //上
-                    this.x[i] = this.x[i - 1] - (this.number[i] - this.number[i - 1]) / 2;
-                    this.y[i] = this.y[i - 1] - (this.number[i] + this.number[i - 1]) / 2;
+                    this.x[i] = this.x[i - 1] - (this.numbers[i] - this.numbers[i - 1]) / 2;
+                    this.y[i] = this.y[i - 1] - (this.numbers[i] + this.numbers[i - 1]) / 2;
                     break;
                 default:
                     break;
@@ -58,17 +59,18 @@ class Fib {
         }
     }
 
-    fibD(p5, n) {
+    fibD(p5) {
+        p5.background(0);
         p5.translate(p5.width / 2, p5.height / 2);
 
         if (this.resize > 50) this.resize = 50;
         if (this.resize < 5.791724706488976e-38) this.resize = 5.791724706488976e-38;
 
-        for (let i = 0; i < n; i++) {
+        for (let i = 0; i < this.count; i++) {
             p5.fill(0);
             p5.stroke(0, 125, 255);
             p5.strokeWeight(5);
-            p5.rect(this.x[i] * this.resize, this.y[i] * this.resize, this.number[i] * this.resize, this.number[i] * this.resize);
+            p5.rect(this.x[i] * this.resize, this.y[i] * this.resize, this.numbers[i] * this.resize, this.numbers[i] * this.resize);
         }   
         
 
@@ -79,12 +81,12 @@ class Fib {
 export default (props) => {
 	const setup = (p5, canvasParentRef) => {
 		canvas = p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
-        fib = new Fib();
-        fib.fibS(p5, 200);
+        fib = new Fib(100);
+        fib.fibS(p5);
 	};
 
 	const draw = (p5) => {
-        fib.fibD(p5, 200);
+        fib.fibD(p5);
         fib.resize -= 1 / 75 * fib.resize;
 	};
 
