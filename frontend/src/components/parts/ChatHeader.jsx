@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ChatHeader = (props) => {
-  const { address } = props;
+  const { className ,address } = props;
 
   return (
-    <header>
+    <header className={className}>
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top border-2 border-top border-warning shadow-lg">
         <div className="container-fluid">
           <Link

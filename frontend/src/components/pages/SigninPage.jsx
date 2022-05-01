@@ -15,7 +15,7 @@ const SignupPage = () => {
             width="72"
             height="72"
           />
-          <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+          <h1 className="h3 mb-5 fw-normal">Please sign in</h1>
 
           <div className="form-floating">
             <input

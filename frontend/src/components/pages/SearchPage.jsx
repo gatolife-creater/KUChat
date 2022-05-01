@@ -32,8 +32,14 @@ const SearchPage = (props) => {
         <div className="container">
           <div className="card address-info">
             <h5 className="card-header text-truncate">
-              {address === "System" ? <></> : <>Address:</>}
-              <span style={{ fontSize: "small" }}>{address}</span>
+              {address === "System" ? (
+                <>{address}</>
+              ) : (
+                <>
+                  Address:
+                  <span style={{ fontSize: "small" }}>{address}</span>
+                </>
+              )}
             </h5>
             <div className="card-body">
               <h5 className="card-title">

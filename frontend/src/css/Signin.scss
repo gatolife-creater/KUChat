@@ -13,16 +13,6 @@
     .form-floating:focus-within {
         z-index: 2;
     }
-    input[name="public"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-    input[name="private"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
     button {
         width: 310px;
     }

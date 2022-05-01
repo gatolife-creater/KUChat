@@ -1,64 +1,60 @@
 table {
     table-layout: fixed;
     width: 100%;
-}
-
-th.th-id {
-    width: auto;
-}
-
-th.th-toAddress {
-    width: 18%;
-}
-
-th.th-fromAddress {
-    width: 18%;
-}
-
-th.th-timestamp {
-    width: 18%;
-}
-
-th.th-amount {
-    width: 16%;
-}
-
-th.th-message {
-    width: 20%;
-}
-
-td.td-id {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-td.td-toAddress {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-td.td-fromAddress {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-td.td-timestamp {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-td.td-amount {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-td.td-message {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    thead {
+        tr {
+            th.th-id {
+                width: auto;
+            }
+            th.th-toAddress {
+                width: 18%;
+            }
+            th.th-fromAddress {
+                width: 18%;
+            }
+            th.th-timestamp {
+                width: 18%;
+            }
+            th.th-amount {
+                width: 16%;
+            }
+            th.th-message {
+                width: 20%;
+            }
+        }
+    }
+    tbody {
+        tr {
+            td.td-id {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            td.td-toAddress {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            td.td-fromAddress {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            td.td-timestamp {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            td.td-amount {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            td.td-message {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
 }
