@@ -39,7 +39,7 @@ const SearchPage = (props) =>{
                         <div className="card-body">
                             <h5 className="card-title"><strong style={{fontSize: "large"}}>{address === "System" ? <>Supply:</> : <></> } {balance} </strong>KUC</h5>
                             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Show QR Code
+                                QR code
                             </button>
                             <Link to={`../transaction?address=${address}`} className="btn btn-success">Chat</Link>
                             <p className="card-text">Transactions:
@@ -52,7 +52,7 @@ const SearchPage = (props) =>{
                         <div className="modal-dialog modal-dialog-centered">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">QR Code</h5>
+                                    <h5 className="modal-title" id="exampleModalLabel">QR code</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body" style={{textAlign:"center"}}>
