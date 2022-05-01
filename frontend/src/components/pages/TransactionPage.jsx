@@ -85,7 +85,7 @@ const TransactionPage = (props) => {
                                     <main className="chat-main">
                                         {tmpTransactions.map((transaction)=>(
                                             transaction.fromAddress === rightAddress ? <div className="chat-sentence chat-sentence-right">
-                                                                                            {isURL(transaction.message)? <a href={transaction.message} target="_blank">{transaction.message}</a>
+                                                                                            {isURL(transaction.message)? <a href={transaction.message} target="_blank" rel="noreferrer">{transaction.message}</a>
                                                                                                                     : <>{transaction.message}</>}
                                                                                         </div>
                                                                                     : <div className="chat-sentence chat-sentence-left">{transaction.message}</div> 

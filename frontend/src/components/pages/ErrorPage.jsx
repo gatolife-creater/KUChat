@@ -26,7 +26,7 @@ class Fib {
 
             switch (i % 4) {
                 case 0: //左or零番目
-                    if (i == 0) {
+                    if (i === 0) {
                         this.x[0] = this.y[0] = 0;
                     } else {
                         this.x[i] = this.x[i - 1] - (this.number[i] + this.number[i - 1]) / 2;
@@ -35,7 +35,7 @@ class Fib {
                     break;
 
                 case 1: //下or基準
-                    if (i == 1) {
+                    if (i === 1) {
                         this.x[1] = this.y[1] = 0; 
                     } else {
                         this.x[i] = this.x[i - 1] + (this.number[i] - this.number[i - 1]) / 2;
@@ -51,6 +51,8 @@ class Fib {
                 case 3: //上
                     this.x[i] = this.x[i - 1] - (this.number[i] - this.number[i - 1]) / 2;
                     this.y[i] = this.y[i - 1] - (this.number[i] + this.number[i - 1]) / 2;
+                    break;
+                default:
                     break;
             }
         }
@@ -73,6 +75,7 @@ class Fib {
     }
 }
 
+/* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default (props) => {
 	const setup = (p5, canvasParentRef) => {
 		canvas = p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../parts/NavBar";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -7,7 +7,6 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 const SignupPage = () => {
     const [message, setMessage] = useState("");
     const [publicClickboard, setPublicClickboardState] = useState(false);
-    const [privateClickboard, setPrivateClickboardState] = useState(false);
 
     const generateAddress = () =>{
         fetch("/generate-address")

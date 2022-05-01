@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const session = require("express-session");
 const path = require('path');
-const port = process.env.PORT || 3006;
+const port = process.env.PORT || 3007;
 
 const { Blockchain, Transaction } = require("./blockchain");
 const EC = require("elliptic").ec;
