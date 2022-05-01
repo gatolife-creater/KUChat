@@ -4,7 +4,8 @@ const session = require("express-session");
 const path = require('path');
 const port = process.env.PORT || 3007;
 
-const { Blockchain, Transaction } = require("./blockchain");
+const { Transaction } = require("./transaction");
+const { Blockchain } = require("./blockchain");
 const EC = require("elliptic").ec;
 //ビットコインのウォレットにも実際に使われるアルゴリズムらしい
 const ec = new EC("secp256k1");

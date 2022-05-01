@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../parts/NavBar";
 import Sketch from "react-p5";
 
+/*eslint no-unused-vars: "off"*/
 let canvas;
 let fib;
 
