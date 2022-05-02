@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 
 import NavBar from "../parts/NavBar";
 
 const HomePage = (props) => {
   const { blockchain } = props;
+
+  useEffect(() => {
+    document.title = "KUChat";
+  })
+
   return (
     <>
       <NavBar />

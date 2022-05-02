@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 
 import NavBar from "../parts/NavBar";
 import TransactionTable from "../parts/TransactionTable";
@@ -13,6 +13,10 @@ const BlockDetailsPage = (props) => {
   let queries = getQueries(location);
   let transactions;
 
+  useEffect(() => {
+    document.title = "KUChat | Block Details"
+  });
+  
   try {
     transactions = blockchain[queries.number].transactions;
   } catch (e) {

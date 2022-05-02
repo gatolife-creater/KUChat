@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../parts/NavBar";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -12,6 +12,10 @@ const SignupPage = () => {
       .then((res) => res.json())
       .then((data) => setMessage(data));
   };
+
+  useEffect(() => {
+    document.title = "KUChat | Signup";
+  })
 
   return (
     <>

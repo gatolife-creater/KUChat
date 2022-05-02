@@ -24,6 +24,10 @@ const TransactionPage = (props) => {
       .then((data) => setMessage(data.public));
   }, []);
 
+  useEffect(() => {
+    document.title = "KUChat | Transaction";
+  })
+
   const leftAddress = queries.address;
 
   let tmpTransactions = getCommunicationHistory(

@@ -17,6 +17,10 @@ const WalletPage = (props) => {
       .then((data) => setMessage(data.public));
   }, []);
 
+  useEffect(() => {
+    document.title = "KUChat | Wallet";
+  })
+
   let balance = 0;
   let transactions = [];
 

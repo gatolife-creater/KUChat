@@ -112,6 +112,9 @@ export default (props) => {
   const mouseWheel = (p5, event) => {
     fib.resize -= (event.delta / 1000) * fib.resize;
   };
+
+  document.title = "KUChat | ErrorPage";
+
   return (
     <>
       <NavBar />

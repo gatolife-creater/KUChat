@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { QRCodeSVG } from "qrcode.react";
 
 import NavBar from "../parts/NavBar";
@@ -24,6 +24,10 @@ const SearchPage = (props) => {
     ? (balance = -getBalanceOfAddress(blockchain, address))
     : (balance = getBalanceOfAddress(blockchain, address));
   transactions = getTransactionsOfAddress(blockchain, address);
+
+  useEffect(() => {
+    document.title = "KUChat | Search";
+  })
 
   return (
     <>
