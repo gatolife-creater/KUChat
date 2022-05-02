@@ -33,44 +33,44 @@ const NavBar = () => {
                     className="nav-link active"
                     aria-current="page"
                   >
-                    Home
+                    ホーム
                   </Link>
                 ) : (
                   <Link to={"/"} className="nav-link" aria-current="page">
-                    Home
+                    ホーム
                   </Link>
                 )}
               </li>
               <li className="nav-item">
                 {pathname === "/wallet" ? (
                   <Link to={"/wallet"} className="nav-link active">
-                    Wallet
+                    ウォレット
                   </Link>
                 ) : (
                   <Link to={"/wallet"} className="nav-link">
-                    Wallet
+                    ウォレット
                   </Link>
                 )}
               </li>
               <li className="nav-item">
                 {pathname === "/transaction" ? (
                   <Link to={"/transaction"} className="nav-link active">
-                    Transaction
+                    取引
                   </Link>
                 ) : (
                   <Link to={"/transaction"} className="nav-link">
-                    Transaction
+                    取引
                   </Link>
                 )}
               </li>
               <li className="nav-item">
                 {pathname === "/richlist" ? (
                   <Link to={"/richlist"} className="nav-link active">
-                    Rich List
+                    ランキング
                   </Link>
                 ) : (
                   <Link to={"/richlist"} className="nav-link">
-                    Rich List
+                    ランキング
                   </Link>
                 )}
               </li>
