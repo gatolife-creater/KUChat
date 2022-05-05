@@ -2,6 +2,11 @@ const SHA256 = require('crypto-js/sha256');
 const EC = require("elliptic").ec;
 const ec = new EC("secp256k1");
 
+const { Filter } = require("./filter");
+const filter = new Filter();
+filter.useFilteringList("jp");
+filter.useFilteringList("en");
+
 class Transaction {
     /**
      * 
@@ -14,7 +19,7 @@ class Transaction {
         this.fromAddress = fromAddress;
         this.toAddress = toAddress;
         this.amount = amount;
-        this.message = message;
+        this.message = filter.clean(message);
         this.timestamp = Date.now();
     }
 
