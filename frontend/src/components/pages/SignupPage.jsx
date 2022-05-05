@@ -5,7 +5,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const SignupPage = () => {
   const [message, setMessage] = useState("");
-  const [publicClickboard, setPublicClickboardState] = useState(false);
+  const [clipboard, setClipboardState] = useState(false);
 
   const generateAddress = () => {
     fetch("/generate-address")
@@ -41,12 +41,12 @@ const SignupPage = () => {
                 readOnly="true"
               />
               <CopyToClipboard text={message.mnemonic}>
-                {publicClickboard ? (
+                {clipboard ? (
                   <span className="input-group-text">Copied</span>
                 ) : (
                   <span
                     className="input-group-text"
-                    onClick={() => setPublicClickboardState(true)}
+                    onClick={() => setClipboardState(true)}
                   >
                     Copy
                   </span>
