@@ -98,6 +98,19 @@ class Blockchain {
         }
         return true;
     }
+
+    /**
+     * 
+     * @param {Blockchain} anotherBlockchain 
+     */
+    replaceChain(anotherBlockchain) {
+        if (!anotherBlockchain.isValid()) return false;
+
+        if (!anotherBlockchain.chain.length > this.chain.length) return false;
+
+        // これだとmining difficultyをいじられて、selfish miningをされる恐れがある
+        this.chain = anotherBlockchain.chain;
+    }
 }
 
 module.exports.Blockchain = Blockchain;

@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const Gun = require('gun');
+
 
 const session = require("express-session");
 
@@ -17,7 +19,19 @@ const crypto = require("crypto");
 
 // ブロックチェーンを生成
 const kuchatBlockchain = new Blockchain();
+const kuchatBlockchain2 = new Blockchain();
+let json = JSON.stringify(kuchatBlockchain2);
+// console.log(json);
 
+let blockchain = JSON.parse(json);
+// kuchatBlockchain.chain = blockchain;
+// console.log(blockchain.chain);
+// console.log(blockchain.chain[0]);
+// kuchatBlockchain.chain = blockchain.chain
+console.log(typeof kuchatBlockchain.chain[0]);
+// console.log("get:", kuchatBlockchain.chain[0]);
+
+app.use(Gun.serve);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use(session({
@@ -85,6 +99,8 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`listening on *:${port}`);
 });
+
+Gun({ web: server });
