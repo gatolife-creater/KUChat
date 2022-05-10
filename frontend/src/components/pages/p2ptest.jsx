@@ -25,7 +25,7 @@ function reducer(state, message) {
 const PeerToPeer = () => {
     /// the form state manages the form input for creating a new message
     const [formState, setForm] = useState({
-        name: '', message: ''
+        chain:""
       })
     
       // initialize the reducer & state for holding the messages array
@@ -37,8 +37,7 @@ const PeerToPeer = () => {
         const messages = gun.get('messages')
         messages.map().on(m => {
           dispatch({
-            name: m.name,
-            message: m.message,
+            blockchain:m.blockchain,
             createdAt: m.createdAt
           })
         })
@@ -48,12 +47,11 @@ const PeerToPeer = () => {
       function saveMessage() {
         const messages = gun.get('messages')
         messages.set({
-          name: formState.name,
-          message: formState.message,
-          createdAt: Date.now()
+            blockchain:formState.blockchain,
+            createdAt: Date.now()
         })
         setForm({
-          name: '', message: ''
+            blockchain:""
         })
       }
     
@@ -69,22 +67,15 @@ const PeerToPeer = () => {
             <div style={{ padding: 30 }}>
                 <input
                     onChange={onChange}
-                    placeholder="Name"
-                    name="name"
-                    value={formState.name}
-                />
-                <input
-                    onChange={onChange}
-                    placeholder="Message"
-                    name="message"
-                    value={formState.message}
+                    placeholder="Name"  
+                    name="blockchain"
+                    value={formState.blockchain}
                 />
                 <button onClick={saveMessage}>Send Message</button>
                 {
                     state.messages.map(message => (
                     <div key={message.createdAt}>
-                        <h2>{message.message}</h2>
-                        <h3>From: {message.name}</h3>
+                        <h2>{message.blockchain}</h2>
                         <p>Date: {message.createdAt}</p>
                     </div>
                     ))
