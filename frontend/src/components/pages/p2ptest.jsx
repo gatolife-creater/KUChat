@@ -65,6 +65,7 @@ const PeerToPeer = () => {
       return (
           <>
             <NavBar />
+            <main>
             <div style={{ padding: 30 }}>
                 <input
                     onChange={onChange}
@@ -89,6 +90,7 @@ const PeerToPeer = () => {
                     ))
                 }
             </div>
+            </main>
           </>
       )
 }
