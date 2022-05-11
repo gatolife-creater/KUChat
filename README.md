@@ -38,7 +38,6 @@ KUChatプロジェクトは共同開発をしていただける方を募集し�
 * JavaScript -- バックエンド開発の基礎です。
 * Node.js -- バックエンド開発の基礎です。
 * (Express) -- バックエンド開発の基礎です。
-* (SQL) --  ユーザー情報を整理する際に使用します。
 * ブロックチェーンに関する基礎的な知識
 <br><br><br><br>
 
@@ -47,7 +46,7 @@ KUChatプロジェクトは共同開発をしていただける方を募集し�
 
 KUChatでは、ブロックチェーンの取引履歴を一時的に公開しています。
 
-https://front-react-back-node-jp.herokuapp.com/api にて公開していますので、フロントエンドの開発にお役立てください。<br><br><br><br>
+https://kuchat.herokuapp.com/api にて公開していますので、フロントエンドの開発にお役立てください。<br><br><br><br>
 
 ## APIの利用手引き
 
@@ -56,7 +55,7 @@ APIの利用方法について簡単に説明いたします。ここではNode.
 ```javascript
 let blockchainVar;
 
-fetch("https://front-react-back-node-jp.herokuapp.com/api")
+fetch("https://kuchat.herokuapp.com/api")
       .then((res) => res.json())
       .then((data) => blockchainVar = data.blockchain);
 
