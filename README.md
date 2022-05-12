@@ -42,26 +42,6 @@ KUChatプロジェクトは共同開発をしていただける方を募集し�
 <br><br><br><br>
 
 
-## APIの利用について
-
-KUChatでは、ブロックチェーンの取引履歴を一時的に公開しています。
-
-https://kuchat.herokuapp.com/api にて公開していますので、フロントエンドの開発にお役立てください。<br><br><br><br>
-
-## APIの利用手引き
-
-APIの利用方法について簡単に説明いたします。ここではNode.jsを用います。
-
-```javascript
-fetch("https://kuchat.herokuapp.com/api")
-      .then((res) => res.json())
-      .then((data) => console.log(data.blockchain));
-
-console.log(blockchainVar):
-```
-<br><br><br><br>
-
-
 ## KUChatの構成（2022/04/04時点）
 
 * フロントエンド
