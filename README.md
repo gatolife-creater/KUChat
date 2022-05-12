@@ -53,11 +53,9 @@ https://kuchat.herokuapp.com/api にて公開していますので、フロン�
 APIの利用方法について簡単に説明いたします。ここではNode.jsを用います。
 
 ```javascript
-let blockchainVar;
-
 fetch("https://kuchat.herokuapp.com/api")
       .then((res) => res.json())
-      .then((data) => blockchainVar = data.blockchain);
+      .then((data) => console.log(data.blockchain));
 
 console.log(blockchainVar):
 ```
