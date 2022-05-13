@@ -63,7 +63,7 @@ const App = () => {
         />
         <Route path="/signup" element={<SignupPage />} exact />
         <Route path="/signin" element={<SigninPage />} exact />
-        <Route path="/p2p" element={<PeerToPeer />} exact />
+        <Route path="/p2p" element={<PeerToPeer blockchain={blockchain} />} exact />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
