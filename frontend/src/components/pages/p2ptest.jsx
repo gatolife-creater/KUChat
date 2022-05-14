@@ -1,8 +1,7 @@
-import { useEffect, useState, useReducer } from "react";
 import Gun from "gun";
 import NavBar from "../parts/NavBar";
+import "./../../blockchain/index";
 
-// initialize gun locally
 const gun = Gun({
   peers: ["http://localhost:3007/gun"],
 });
