@@ -7,6 +7,10 @@ const filter = new Filter();
 filter.useFilteringList("jp");
 filter.useFilteringList("en");
 
+
+const { Morphology } = require("./morphologicalAnalysis");
+
+
 class Transaction {
     /**
      * 
@@ -21,6 +25,9 @@ class Transaction {
         this.amount = amount;
         this.message = filter.clean(message);
         this.timestamp = Date.now();
+        new Morphology(message).getWordsByRole("固有名詞").then((list) => {
+            this.words = list;
+        });
     }
 
     calculateHash() {
@@ -29,7 +36,8 @@ class Transaction {
             this.toAddress +
             this.amount +
             this.message +
-            this.timestamp
+            this.timestamp +
+            this.words
         ).toString();
     }
 
