@@ -1,0 +1,26 @@
+getBalanceOfAddressに使えそう
+            const data = [{
+                type: 'test1',
+                name: 'abc'
+            },
+            {
+                type: 'test2',
+                name: 'cde'
+            },
+            {
+                type: 'test1',
+                name: 'fgh'
+            },
+            ]
+
+            function findtest1(name) {
+            for (let i = 0; i < data.length; ++i) {
+                if (data[i].type === 'test1' && data[i].name === name) {
+                    return data[i];
+                }
+            }
+            }
+
+            //Shorthand
+            filteredData = data.find(data => data.type === 'test1' && data.name === 'fgh');
+            console.log(filteredData); // { type: 'test1', name: 'fgh' }
