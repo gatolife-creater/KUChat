@@ -1,36 +1,32 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import Gun from "gun";
 import NavBar from "../parts/NavBar";
 import { Link } from "react-router-dom";
 
-import {Blockchain} from "./../../blockchain/blockchain";
-import {Transaction} from "./../../blockchain/transaction";
+import { Blockchain } from "./../../blockchain/blockchain";
+import { Transaction } from "./../../blockchain/transaction";
 
 const EC = require("elliptic").ec;
 const ec = new EC("secp256k1");
 
 const kuchatBlockchain = new Blockchain();
 
-
 const gun = Gun({
   peers: ["http://localhost:3007/gun"],
 });
 
 const PeerToPeer = (props) => {
-  gun.get("blockchain").put(JSON.stringify(kuchatBlockchain) );
+  const [count, setCount] = useState(0);
+
   gun.get("blockchain").on((data, key) => {
     console.log("realtime updates:", JSON.parse(data.blockchain));
   });
 
-  setInterval(() => {
-    gun.get("blockchain").put(JSON.stringify(kuchatBlockchain));
-  }, 10000);
-
-  const createTransaction = () =>{
+  const createTransaction = () => {
     let privateKey = "go-go-go-this-is-test-key";
     let fromAddress = ec.keyFromPrivate(privateKey).getPublic("hex");
     let toAddress = "matthew.eth";
-    
+
     kuchatBlockchain.minePendingTransactions(fromAddress);
 
     let transaction = new Transaction(fromAddress, toAddress, 100, "僕は先日");
@@ -39,24 +35,22 @@ const PeerToPeer = (props) => {
     // 取引を保留する
     kuchatBlockchain.addTransaction(transaction);
     kuchatBlockchain.minePendingTransactions(fromAddress);
+    gun.get("blockchain").put(JSON.stringify(kuchatBlockchain));
+    setCount(count + 1);
+  };
 
-    setChain(kuchatBlockchain.chain);
-  }
-
-  const [chain, setChain] = useState([]);
-
-  useEffect(() => {
-    setChain(kuchatBlockchain.chain);
-  },[])
+  useEffect(() => {}, []);
 
   return (
     <>
       <NavBar />
       <main>
-        <button className="btn btn-primary" onClick={createTransaction}>create transaction</button>
+        <button className="btn btn-primary" onClick={createTransaction}>
+          create transaction
+        </button>
         <div className="container">
           <div className="row justifycontent-start">
-            {chain.map((block, index) => (
+            {kuchatBlockchain.chain.map((block, index) => (
               <div className="col-md-4 ms-auto">
                 <div className="card clickable-card">
                   <Link
