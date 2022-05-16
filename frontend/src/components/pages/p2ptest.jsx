@@ -17,15 +17,13 @@ const gun = Gun({
 });
 
 const PeerToPeer = (props) => {
-  gun.get("blockchain").put({
-    blockchain: kuchatBlockchain,
-  });
+  gun.get("blockchain").put(JSON.stringify(kuchatBlockchain) );
   gun.get("blockchain").on((data, key) => {
     console.log("realtime updates:", JSON.parse(data.blockchain));
   });
 
   setInterval(() => {
-    gun.get("blockchain").put({ blockchain: JSON.stringify(kuchatBlockchain) });
+    gun.get("blockchain").put(JSON.stringify(kuchatBlockchain));
   }, 10000);
 
   const createTransaction = () =>{

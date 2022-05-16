@@ -7,9 +7,7 @@ const filter = new Filter();
 filter.useFilteringList("jp");
 filter.useFilteringList("en");
 
-
 const { Morphology } = require("./morphologicalAnalysis");
-
 
 class Transaction {
     /**

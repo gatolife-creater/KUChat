@@ -2,10 +2,21 @@ const path = require('path');
 const kuromoji = require('kuromoji');
 
 class Morphology {
+    /**
+     * 
+     * @param {string} sentence 
+     * 分析したい文章を引数に取る
+     */
     constructor(sentence) {
         this.sentence = sentence;
     }
 
+    /**
+     * 
+     * @param {string} role 
+     * 取得したい品詞を引数に取る
+     * @returns 
+     */
     getWordsByRole(role) {
         let words = [];
         return new Promise((resolve, reject) => {
